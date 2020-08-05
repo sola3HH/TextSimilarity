@@ -13,21 +13,21 @@ def tokenization(fileName):
 
 
 # 分词
-texts = [tokenization('test1.txt')]
+texts = [tokenization('test1.txt'), tokenization('test2.txt'), tokenization('test3.txt')]
 # 建立词袋并向量化（语料库）
 dictionary = corpora.Dictionary(texts)
-feature_cnt = len(dictionary.token2id.keys())
+num_features = len(dictionary.token2id)
 corpus = [dictionary.doc2bow(text) for text in texts]
-# 建立TF-IDF模型
+# 训练TF-IDF模型
 tfidf = models.TfidfModel(corpus)
 # 构建query文本
-query = tokenization('test2.txt')
+query = tokenization('标准答案.txt')
 query_vector = dictionary.doc2bow(query)
 # 对稀疏向量建立索引
-index = similarities.MatrixSimilarity(tfidf[corpus], num_features=feature_cnt)
+index = similarities.SparseMatrixSimilarity(tfidf[corpus], num_features)
 # 相似计算
 sim = index[tfidf[query_vector]]
-print(sim)
+
 result_list = []
 for i in range(len(sim)):
-    print('与原文件相似度为: %.2f' % (sim[i]))
+    print('与第%d个文件相似度为: %.2f' % (i + 1, sim[i] * 100) + '%')
