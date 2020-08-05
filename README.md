@@ -1,1 +1,2 @@
 # TextSimilarity
+基于gensim以及nltk的文件相似度比较
