@@ -105,8 +105,9 @@ if method == "1":
         print('文本' + query_text + '与原文的相似度为：%.2f' % (sim * 100) + "%")
 
 # 通过调取api获得返回信息
-if method == "2":
-    urllib.request.urlretrieve('https://www.cnblogs.com/qikeyishu/p/10748497.html', 'mp3/1.mp3')
+# if method == "2":
+    # 从指定地址获取文件
+    # urllib.request.urlretrieve('https://www.cnblogs.com/qikeyishu/p/10748497.html', 'mp3/1.mp3')
 
     # # 创建新表格
     # statistic = xlwt.Workbook(encoding='utf-8')
@@ -125,6 +126,7 @@ if method == "2":
     #     row_value = sheet.row(row)
     #     value1 = row_value[1].value
     #     value2 = row_value[2].value
+    # statistic.save('表格名称.xls')
 
     # 接口调取
     # recordPath = 'mp3/1.mp3'
